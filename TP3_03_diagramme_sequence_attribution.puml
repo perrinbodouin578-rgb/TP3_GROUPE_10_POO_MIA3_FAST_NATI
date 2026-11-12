@@ -1,0 +1,22 @@
+@startuml
+title TP3 - Diagramme de sequence : attribution d'une chambre
+actor Responsable
+participant Residence
+participant DemandeHebergement as Demande
+participant Chambre
+participant Attribution
+Responsable -> Residence : attribuerChambre(id, numero, date)
+Residence -> Demande : verifierStatut()
+Demande --> Residence : EN_ATTENTE
+Residence -> Residence : verifierEtudiantNonHeberge()
+Residence -> Chambre : placesLibres()
+Chambre --> Residence : nombre
+alt demande valide et place disponible
+ Residence -> Chambre : occuper()
+ Residence -> Attribution : creer(...)
+ Residence -> Demande : accepter()
+ Residence --> Responsable : succes
+else condition non respectee
+ Residence --> Responsable : echec + motif
+end
+@enduml

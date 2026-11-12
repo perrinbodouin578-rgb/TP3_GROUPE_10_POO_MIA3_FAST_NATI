@@ -1,0 +1,53 @@
+@startuml
+title Exercice 3 - Diagramme de classes (heritage) : personnel universitaire
+skinparam classAttributeIconSize 0
+
+abstract class Employe {
+ - matricule : string
+ - nom : string
+ - prenom : string
+ - salaireBase : double
+ + Employe(m, n, p, s)
+ + {abstract} ~Employe()
+ + getMatricule() : string
+ + getNom() : string
+ + getPrenom() : string
+ + getSalaireBase() : double
+ + setSalaireBase(s : double) : void
+ + {abstract} calculerSalaire() : double
+ + {abstract} getCategorie() : string
+ + afficher() : void
+}
+
+class Enseignant {
+ - grade : string
+ - indemniteRecherche : double
+ - nbHeuresSup : int
+ - tauxHeureSup : double
+ + calculerSalaire() : double
+ + getCategorie() : string
+ + afficher() : void
+}
+
+class AgentAdministratif {
+ - service : string
+ - primeResponsabilite : double
+ - primeTransport : double
+ + calculerSalaire() : double
+ + getCategorie() : string
+ + afficher() : void
+}
+
+class Technicien {
+ - specialite : string
+ - primeRisque : double
+ - primeAstreinte : double
+ + calculerSalaire() : double
+ + getCategorie() : string
+ + afficher() : void
+}
+
+Employe <|-- Enseignant
+Employe <|-- AgentAdministratif
+Employe <|-- Technicien
+@enduml

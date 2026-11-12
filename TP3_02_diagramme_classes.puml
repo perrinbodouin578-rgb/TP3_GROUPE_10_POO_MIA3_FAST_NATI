@@ -1,0 +1,57 @@
+@startuml
+title TP3 - Diagramme de classes
+class Etudiant {
+ - matricule : string
+ - nom : string
+ - prenom : string
+ + nomComplet() : string
+}
+class Residence {
+ - nom : string
+ + enregistrerDemande() : int
+ + attribuerChambre() : bool
+ + enregistrerDepart() : bool
+ + tauxOccupation() : double
+}
+class Batiment {
+ - nom : string
+ + placesDisponibles() : int
+}
+class Chambre {
+ - numero : string
+ - capacite : int
+ - nbOccupants : int
+ + placesLibres() : int
+ + occuper() : bool
+ + liberer() : bool
+}
+class DemandeHebergement {
+ - id : int
+ - dateDemande : string
+ - statut : StatutDemande
+ + accepter() : bool
+ + refuser() : bool
+ + annuler() : bool
+}
+class Attribution {
+ - id : int
+ - dateEntree : string
+ - dateSortie : string
+ + estEnCours() : bool
+ + cloturer(date) : bool
+}
+enum StatutDemande {
+ EN_ATTENTE
+ ACCEPTEE
+ REFUSEE
+ ANNULEE
+ CLOTUREE
+}
+Residence "1" *-- "1..*" Batiment
+Batiment "1" *-- "1..*" Chambre
+Etudiant "1" -- "0..*" DemandeHebergement : depose
+Etudiant "1" -- "0..*" Attribution : historique
+Chambre "1" -- "0..*" Attribution : concerne
+DemandeHebergement "1" -- "0..1" Attribution : produit
+DemandeHebergement ..> StatutDemande
+@enduml

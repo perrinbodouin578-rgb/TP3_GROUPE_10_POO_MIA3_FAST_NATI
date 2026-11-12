@@ -1,0 +1,11 @@
+@startuml
+title TP3 - Diagramme d'etats-transitions d'une demande
+[*] --> EN_ATTENTE : enregistrerDemande()
+EN_ATTENTE --> ACCEPTEE : attribuerChambre() [place libre]
+EN_ATTENTE --> REFUSEE : refuser()
+EN_ATTENTE --> ANNULEE : annuler()
+ACCEPTEE --> CLOTUREE : enregistrerDepart()
+REFUSEE --> [*]
+ANNULEE --> [*]
+CLOTUREE --> [*]
+@enduml

@@ -1,0 +1,33 @@
+@startuml
+title Exercice 3 - Contenu de la collection vector<Employe*> en memoire
+left to right direction
+
+object "vector<Employe*> personnel" as V {
+ [0] = adresse
+ [1] = adresse
+ [2] = adresse
+ [3] = adresse
+}
+
+object "Enseignant (tas)" as E0 {
+ matricule = ENS001
+ nom = AGBODJAN
+}
+object "Enseignant (tas)" as E1 {
+ matricule = ENS002
+ nom = HOUNKPATIN
+}
+object "AgentAdministratif (tas)" as E2 {
+ matricule = ADM001
+ nom = DOSSOU
+}
+object "Technicien (tas)" as E3 {
+ matricule = TEC001
+ nom = ADJOVI
+}
+
+V --> E0 : [0]
+V --> E1 : [1]
+V --> E2 : [2]
+V --> E3 : [3]
+@enduml

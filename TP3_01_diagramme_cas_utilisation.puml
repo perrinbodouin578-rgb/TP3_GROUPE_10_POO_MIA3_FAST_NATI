@@ -1,0 +1,19 @@
+@startuml
+title TP3 - Diagramme de cas d'utilisation
+left to right direction
+actor Responsable
+actor Etudiant
+rectangle "Gestion de la residence" {
+ usecase "Enregistrer une demande" as UC1
+ usecase "Consulter les places disponibles" as UC2
+ usecase "Attribuer une chambre" as UC3
+ usecase "Enregistrer un depart" as UC4
+ usecase "Consulter chambres et historique" as UC5
+}
+Responsable --> UC1
+Responsable --> UC2
+Responsable --> UC3
+Responsable --> UC4
+Responsable --> UC5
+Etudiant --> UC1
+@enduml
